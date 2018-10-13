@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: www-np
+spec: 
+  selector: 
+    app: www
+  type: NodePort #Service de type NodePort, exposé sur chaque node du cluster
+  ports: 
+  - port: 80 # forward les requetes vers le port 80 des
+    # pods sous-jacents. The port that this service should
+    # serve on the container on each pod to connect to
+    targetPort: 80 # Exposition du port 80 dans le cluster
+    nodePort: 31000 # Exposition du port 31000 sur le cluster
